@@ -6,12 +6,13 @@ preload.prototype = {
         this.load.setPreloadSprite(loadingBar);
 
         //Spritesheet
-		//this.game.load.spritesheet('hero_idle', 'assets/img/hero_idle.png', 150,150,2); 
+		this.game.load.spritesheet('hero_idle', 'assets/img/hero_idle.png', 150,150,2); 
+		this.game.load.spritesheet('hero_slip', 'assets/img/hero_slip.png', 150,75,1); 
 
 		//Image
 		this.game.load.image("gametitle","assets/img/gametitle.jpg");
 		this.game.load.image("gameover","assets/img/gameover.jpg");
-		this.game.load.image("background", "assets/img/game_bg.jpg");  
+		this.game.load.image("background", "assets/img/Game_BG.png");  
 
 		//Sound
     	game.load.audio('gameSound', 'assets/sound/gameSound.mp3');
