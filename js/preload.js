@@ -7,6 +7,7 @@ preload.prototype = {
 
         //Spritesheet
 		this.game.load.spritesheet('hero_idle', 'assets/img/hero_idle.png', 150,150,2); 
+		this.game.load.spritesheet('hero_slip', 'assets/img/hero_slip.png', 150,75,1); 
 
 		//Image
 		this.game.load.image("gametitle","assets/img/gametitle.jpg");
