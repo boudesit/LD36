@@ -13,9 +13,10 @@ preload.prototype = {
 		//Image
 		this.game.load.image("gametitle","assets/img/gametitle.jpg");
 		this.game.load.image("gameover","assets/img/gameover.jpg");
-		this.game.load.image("background", "assets/img/game_bg.jpg");  
     	this.game.load.image('bullet', 'assets/img/bullet.png');
-    	
+		this.game.load.image("background", "assets/img/Game_BG.png");  
+
+
 		//Sound
     	game.load.audio('gameSound', 'assets/sound/gameSound.mp3');
     	game.load.audio('introSound', 'assets/sound/introSound.mp3'); 
