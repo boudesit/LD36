@@ -66,7 +66,7 @@ HeroManager.prototype = {
     		this._ohGravity();
     	} 
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.sprite.position.y == 400){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == 400){
     		this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
             console.log("coucou");
