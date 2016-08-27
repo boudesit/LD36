@@ -35,17 +35,15 @@ theGame.prototype = {
 
 	update: function() {
       this.heroManager.update();
-      var isDead =  game.physics.arcade.collide(this.hero,  this.ennemy, this.colisionManager.ennemyHitHero(this.hero,this.ennemy) , null, this);
+      var isDead =  game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getSprite() , this.colisionManager.ennemyHitHero , null, this);
       
       if(isDead == true)
       {
 		this.lose();
       }
-
-
 	
-this.ennemy.update();
-},
+	  this.ennemy.update();
+	},
 
 	lose: function() {
 		music.pause();
