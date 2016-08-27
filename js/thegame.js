@@ -1,7 +1,7 @@
 var theGame = function(game) {
 	this.game = game;
 	this.music = null;
-  this.heroManager = null;
+	this.heroManager = null;
 }
 
 theGame.prototype = {
@@ -20,14 +20,16 @@ theGame.prototype = {
     	}	
 
 
-      this.heroManager = new HeroManager(this.game);
-      this.heroManager.create();
+		this.heroManager = new HeroManager(this.game);
+		this.heroManager.create();
 
-
+		this.enemyManager = new EnemyManager(this.game);
+		this.enemyManager.create();
 	},
 
 	update: function() {
-      this.heroManager.update();
+		this.heroManager.update();
+		this.enemyManager.update();
 	},
 
 	lose: function() {
