@@ -35,6 +35,15 @@ theGame.prototype = {
 
 	update: function() {
       this.heroManager.update();
+
+      var isHit = game.physics.arcade.collide( this.heroManager._getFire() ,  this.ennemy.getEnemy().getSprite() , this.colisionManager.fireHitEnnemy , null, this);
+      
+      if(isHit == true)
+      {
+      	this.hit();
+      	isHit = false;
+      }
+
       var isDead =  game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getSprite() , this.colisionManager.ennemyHitHero , null, this);
       
       if(isDead == true)
@@ -48,5 +57,12 @@ theGame.prototype = {
 	lose: function() {
 		music.pause();
 		this.game.state.start("GameOver");	
+	},
+
+	hit: function() {
+		this.ennemy.getEnemy().setisDead(true);
+		this.heroManager._killFire()
+
+		//this.ennemy.getEnemy().kill();
 	}
 }
