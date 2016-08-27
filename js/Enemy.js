@@ -1,19 +1,20 @@
 function Enemy(game, velocity, type) {
-	console.log("type:" + type);
+	var tabPos = type % 3;
 	this.game = game;
 	this.enemySprite = null;
 	this.isDead = null;
 	this.velocity = velocity;
-	this.type = types[type % 3];
+	this.type = types[tabPos];
 	this.cursors = null;
 	this.posX = 800;
-	this.posY = 485;
+	this.posY = 450 - yDiff[tabPos];
 	this.isDead = false;
 	this.isDraw = false;
 	this.isSpriteDestroy;
 };
 
 var types = ["up", "down", "shot"];
+var yDiff = [100, 0, 50];
 var animation = 15;
 
 Enemy.prototype.create = function create() {
