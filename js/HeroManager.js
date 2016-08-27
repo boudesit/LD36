@@ -2,9 +2,9 @@ var HeroManager = function(game) {
 	this.game = game;
 	this.sprite = null;
 	this.spriteSlip = null;
-	this.posX = 130;
+	this.posX = 200;
 	this.posYspriteSplip = 400;
-	this.posY = 300;
+	this.posY = 400;
 	this.isDead = false;
     this.fireButton = null;
     this.weapon = null;
@@ -46,15 +46,15 @@ HeroManager.prototype = {
     	console.log(this.sprite.position.y);
     	console.log(this.spriteSlip.position.y);
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.sprite.position.y == 300){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.sprite.position.y == 400){
 
     		this._jump();
-    	} else if(this.sprite.position.y < 215) {
+    	} else if(this.sprite.position.y < 215 ) {
 
     		this._ohGravity();
-    	}
+    	} 
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.sprite.position.y == 300){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.sprite.position.y == 400){
     		this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN) ) {
 	    	this.sprite.visible = true;
@@ -66,6 +66,11 @@ HeroManager.prototype = {
 
             this.weapon.fire();
         }
+        if(this.sprite.position.y > 385 && this.sprite.body.velocity.y == 1000) {
+
+            this._recreateSprite();
+        }
+
     },
 
 
@@ -77,6 +82,7 @@ HeroManager.prototype = {
     _ohGravity : function(){
 
     	this.sprite.body.velocity.y = 1000;
+
     },
 
     _slip : function() {
@@ -101,5 +107,18 @@ HeroManager.prototype = {
     _getIsDead : function() {
 
     	return this.isDead;
+    },
+    _recreateSprite : function () {
+this.sprite.kill();
+    this.sprite = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
+    this.sprite.animations.add('idle', [0,1]);
+    this.game.physics.arcade.enable(this.sprite);
+    this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
+
+    this.sprite.enableBody = true;
+    this.sprite.animations.play('idle', 5, true);
+
+    this.sprite.body.collideWorldBounds=true;
+
     }
 }
