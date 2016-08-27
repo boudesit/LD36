@@ -1,7 +1,9 @@
 var theGame = function(game) {
 	this.game = game;
 	this.music = null;
-  this.heroManager = null;
+    this.heroManager = null;
+    this.colisionManager = null
+    this.ennemy = null
 }
 
 theGame.prototype = {
@@ -20,15 +22,30 @@ theGame.prototype = {
     	}	
 
 
+  	  this.colisionManager = new ColisionManager();
+  	  this.colisionManager.create();
+
       this.heroManager = new HeroManager(this.game);
       this.heroManager.create();
 
+      this.ennemy = new EnemyManager(this.game);
+      this.ennemy.create();
 
 	},
 
 	update: function() {
       this.heroManager.update();
-	},
+      var isDead =  game.physics.arcade.collide(this.hero,  this.ennemy, this.colisionManager.ennemyHitHero(this.hero,this.ennemy) , null, this);
+      
+      if(isDead == true)
+      {
+		this.lose();
+      }
+
+
+	
+this.ennemy.update();
+},
 
 	lose: function() {
 		music.pause();
