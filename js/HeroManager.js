@@ -2,12 +2,15 @@ var HeroManager = function(game) {
 	this.game = game;
 	this.sprite = null;
 	this.spriteSlip = null;
-	this.posX = 130;
-	this.posYspriteSplip = 400;
-	this.posY = 300;
+    this.spriteJump = null;
+	this.posX = 200;
+
+	this.posY = 400;
 	this.isDead = false;
     this.fireButton = null;
     this.weapon = null;
+
+    this.isJump = false;
 }
 
 HeroManager.prototype = {
@@ -23,7 +26,7 @@ HeroManager.prototype = {
 
     this.sprite.body.collideWorldBounds=true;
 
-   	this.spriteSlip = this.game.add.sprite(this.posX,this.posYspriteSplip, 'perso_ss');
+   	this.spriteSlip = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
 	this.spriteSlip.animations.add('slip', [3]);
 	this.game.physics.arcade.enable(this.spriteSlip);
 	this.spriteSlip.physicsBodyType = Phaser.Physics.ARCADE;
@@ -32,6 +35,17 @@ HeroManager.prototype = {
 
     this.spriteSlip.body.collideWorldBounds=true;
 	this.spriteSlip.visible = false;
+
+
+    this.spriteJump = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
+    this.spriteJump.animations.add('jump', [2]);
+    this.game.physics.arcade.enable(this.spriteJump);
+    this.spriteJump.physicsBodyType = Phaser.Physics.ARCADE;
+    this.spriteJump.enableBody = true;
+    this.spriteJump.animations.play('jump', 0, true);
+
+    this.spriteJump.body.collideWorldBounds=true;
+    this.spriteJump.visible = false;
 
 
     //  Creates 1 single bullet, using the 'bullet' graphic
@@ -43,20 +57,19 @@ HeroManager.prototype = {
     },
 
     update: function() {
-    	console.log(this.sprite.position.y);
-    	console.log(this.spriteSlip.position.y);
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.sprite.position.y == 300){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == 400){
 
     		this._jump();
-    	} else if(this.sprite.position.y < 215) {
+    	} else if(this.spriteJump.position.y < 215 ) {
 
     		this._ohGravity();
-    	}
+    	} 
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.sprite.position.y == 300){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == 400){
     		this._slip();
-    	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN) ) {
+    	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
+            console.log("coucou");
 	    	this.sprite.visible = true;
 	    	this.spriteSlip.visible = false;
     	}
@@ -66,17 +79,29 @@ HeroManager.prototype = {
 
             this.weapon.fire();
         }
+        if(this.spriteJump.position.y > 385 && this.spriteJump.body.velocity.y == 1000) {
+            this.spriteJump.visible = false;
+            this.sprite.visible = true;
+            this._setIsJump(false);
+
+            this._recreateSprite();
+        }
+
     },
 
 
     _jump : function(){
+        this._setIsJump(true);
+        this.sprite.visible = false;
+        this.spriteJump.visible = true;
 
-    	this.sprite.body.velocity.y = -1000;
+    	this.spriteJump.body.velocity.y = -1000;
     },
 
     _ohGravity : function(){
 
-    	this.sprite.body.velocity.y = 1000;
+    	this.spriteJump.body.velocity.y = 1000;
+
     },
 
     _slip : function() {
@@ -88,9 +113,11 @@ HeroManager.prototype = {
 
     	if(this.sprite.visible) {
     		return this.sprite;
-    	} else {
+    	} else if(this.spriteSlip.visible){
     		return this.spriteSlip;
-    	}
+    	} else {
+            return this.spriteJump;
+        }
     },
 
     _setIsDead : function(isDead) {
@@ -101,5 +128,35 @@ HeroManager.prototype = {
     _getIsDead : function() {
 
     	return this.isDead;
-    }
+    },
+    _recreateSprite : function () {
+        this.spriteJump.kill();
+        this.spriteJump = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
+        this.spriteJump.animations.add('jump', [2]);
+        this.game.physics.arcade.enable(this.spriteJump);
+        this.spriteJump.physicsBodyType = Phaser.Physics.ARCADE;
+
+        this.spriteJump.enableBody = true;
+        this.spriteJump.animations.play('jump', 0, true);
+
+        this.spriteJump.body.collideWorldBounds=true;
+
+        this.spriteJump.visible = false;
+
+
+    },
+
+    _setIsJump : function(isJump) {
+
+        this.isJump = isJump;
+        console.log(this.isJump);
+    },
+
+
+    _getIsJump : function() {
+
+        return this.isJump;
+    },
+
+
 }
