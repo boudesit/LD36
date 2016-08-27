@@ -5,7 +5,7 @@ var HeroManager = function(game) {
 	this.posX = 130;
 	this.posYspriteSplip = 525;
 	this.posY = 450;
-
+	this.isDead = false;
 
 }
 
@@ -69,5 +69,24 @@ HeroManager.prototype = {
     _slip : function() {
     	this.sprite.visible = false;
     	this.spriteSlip.visible = true;
+    },
+
+    _getSprite : function() {
+
+    	if(this.sprite.visible) {
+    		return this.sprite;
+    	} else {
+    		return this.spriteSlip;
+    	}
+    },
+
+    _setIsDead : function(isDead) {
+
+    	this.isDead = isDead;
+    },
+
+    _getIsDead : function() {
+
+    	return this.isDead;
     }
 }
