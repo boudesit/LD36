@@ -158,5 +158,13 @@ HeroManager.prototype = {
         return this.isJump;
     },
 
+    _getFire: function() {
 
+        return this.weapon.bullets;
+    },
+
+    _killFire: function() {
+
+         this.weapon.bullets.destroy();
+    }
 }

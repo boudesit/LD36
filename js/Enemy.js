@@ -41,9 +41,9 @@ Enemy.prototype.kill = function kill() {
 	// animation
 	// TODO : code
 	
-	this.enemySprite.enableBody = true;
-	this.enemySprite.body.velocity.x = 0;
-	game.time.events.add(2000, this.destroy(), this);
+	//this.enemySprite.enableBody = true;
+	//this.enemySprite.body.velocity.x = 0;
+	//game.time.events.add(2000, this.destroy(), this);
 };
 
 
