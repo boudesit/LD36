@@ -10,10 +10,10 @@ ColisionManager.prototype.create = function create() {
 
 ColisionManager.prototype.ennemyHitHero = function ennemyHitHero(player,ennemy) {
 
-	var explosion = explosions.getFirstExists(false);
+/*	var explosion = explosions.getFirstExists(false);
     explosion.reset(player.body.x, player.body.y);
     explosion.play('explosion', 30, false, true);
-	return true;	
+*/	return true;	
 };
 
 

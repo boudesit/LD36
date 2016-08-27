@@ -28,6 +28,9 @@ theGame.prototype = {
       this.heroManager = new HeroManager(this.game);
       this.heroManager.create();
 
+      this.ennemy = new EnemyManager(this.game);
+      this.ennemy.create();
+
 	},
 
 	update: function() {
@@ -38,7 +41,11 @@ theGame.prototype = {
       {
 		this.lose();
       }
-	},
+
+
+	
+this.ennemy.update();
+},
 
 	lose: function() {
 		music.pause();
