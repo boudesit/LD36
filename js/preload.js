@@ -8,12 +8,14 @@ preload.prototype = {
         //Spritesheet
 		this.game.load.spritesheet('hero_idle', 'assets/img/hero_idle.png', 150,150,2); 
 		this.game.load.spritesheet('hero_slip', 'assets/img/hero_slip.png', 150,75,1); 
+		this.game.load.spritesheet('explosion', 'assets/img/explode.png', 128, 128);
 
 		//Image
 		this.game.load.image("gametitle","assets/img/gametitle.jpg");
 		this.game.load.image("gameover","assets/img/gameover.jpg");
 		this.game.load.image("background", "assets/img/game_bg.jpg");  
-
+    	this.game.load.image('bullet', 'assets/img/bullet.png');
+    	
 		//Sound
     	game.load.audio('gameSound', 'assets/sound/gameSound.mp3');
     	game.load.audio('introSound', 'assets/sound/introSound.mp3'); 

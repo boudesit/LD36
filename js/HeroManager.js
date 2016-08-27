@@ -6,7 +6,8 @@ var HeroManager = function(game) {
 	this.posYspriteSplip = 525;
 	this.posY = 450;
 	this.isDead = false;
-
+    this.fireButton = null;
+    this.weapon = null;
 }
 
 HeroManager.prototype = {
@@ -33,7 +34,12 @@ HeroManager.prototype = {
 	this.spriteSlip.visible = false;
 
 
-
+    //  Creates 1 single bullet, using the 'bullet' graphic
+    this.weapon = this.game.add.weapon(1, 'bullet');
+    this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+    this.weapon.bulletSpeed = 400; 
+    this.weapon.trackSprite(this.sprite, 1, 0);
+    this.weapon.fireAngle = 0;
     },
 
     update: function() {
@@ -53,6 +59,11 @@ HeroManager.prototype = {
 	    	this.spriteSlip.visible = false;
     	}
 
+        if ( game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
+        {
+
+            this.weapon.fire();
+        }
     },
 
 
