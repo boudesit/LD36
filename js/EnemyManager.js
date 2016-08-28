@@ -1,10 +1,10 @@
 var EnemyManager = function(game) {
-	this.currentSpeed = -400;
+	this.currentSpeed = -500;
 	this.upSpeed = -10;
 	this.currentEnemy = null;
 	this.outOfGamePos = 50;
 	this.spawnClock = null;
-	this.maxSpeed = -900;
+	this.maxSpeed = -1000;
 }
 
 EnemyManager.prototype = {
