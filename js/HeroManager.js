@@ -63,7 +63,7 @@ HeroManager.prototype = {
     this.weapon = this.game.add.weapon(1, 'strike');
     this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
     this.weapon.bulletSpeed = 400; 
-    this.weapon.trackSprite(this.sprite, 1, 0);
+    this.weapon.trackSprite(this.sprite, 50, 10);
     this.weapon.fireAngle = 0;
     },
 
@@ -186,6 +186,13 @@ HeroManager.prototype = {
 
     _killFire: function() {
 
-         this.weapon.bullets.destroy();
+         this.weapon.destroy();
+
+        //  Creates 1 single bullet, using the 'bullet' graphic
+        this.weapon = this.game.add.weapon(1, 'strike');
+        this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+        this.weapon.bulletSpeed = 400; 
+        this.weapon.trackSprite(this.sprite, 50, 10);
+        this.weapon.fireAngle = 0;
     }
 }
