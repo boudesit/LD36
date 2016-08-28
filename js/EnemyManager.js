@@ -10,7 +10,8 @@ var EnemyManager = function(game) {
 EnemyManager.prototype = {
     create: function() {
 		// random enemy
-		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
+		var random = this._randomType();
+		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType(), random);
 		this.currentEnemy.create();
 		this.spawnClock = new SpawnClock(game);
     },
@@ -56,7 +57,7 @@ EnemyManager.prototype = {
 	
 	_initEnemy : function() {
 		this._upCurrentSpeed();
-		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
+		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType(), this._randomType());
 		this.currentEnemy.create();
 		this.currentEnemy.update();
 	},
