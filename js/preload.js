@@ -11,12 +11,12 @@ preload.prototype = {
 		this.game.load.spritesheet('explosion', 'assets/img/explode.png', 128, 128);
 
 
-		this.game.load.spritesheet('enemy_up0', 'assets/img/enemy1_1900.png', 50, 50,2); 
-		this.game.load.spritesheet('enemy_up1', 'assets/img/enemy1_1900.png', 50, 50,2); 
-		this.game.load.spritesheet('enemy_up2', 'assets/img/enemy1_1900.png', 50, 50,2); 
+		this.game.load.spritesheet('enemy_up0', 'assets/img/enemy5_2025.png', 41, 50,2); 
+		this.game.load.spritesheet('enemy_up1', 'assets/img/enemy6_2055.png', 50, 49,2); 
+		this.game.load.spritesheet('enemy_up2', 'assets/img/enemy9_2223.png', 50, 50,2); 
 
 		this.game.load.spritesheet('enemy_shot0', 'assets/img/enemy4_2007.png', 50, 150,4); 
-		this.game.load.spritesheet('enemy_shot1', 'assets/img/enemy4_2007.png', 50, 150,4); 
+		this.game.load.spritesheet('enemy_shot1', 'assets/img/enemy8_2209.png', 50, 150,3); 
 		this.game.load.spritesheet('enemy_shot2', 'assets/img/enemy4_2007.png', 50, 150,4); 
 
 		this.game.load.spritesheet('enemy_down0', 'assets/img/enemy1_1900.png', 50, 50,2);
