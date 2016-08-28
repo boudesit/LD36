@@ -38,7 +38,7 @@ preload.prototype = {
 
 		//Image
 		this.game.load.image("gametitle","assets/img/game_start.png");
-		this.game.load.image("gameover","assets/img/gameover.jpg");
+		this.game.load.image("gameover","assets/img/gameover_0047.png");
     	this.game.load.image('bullet', 'assets/img/bullet.png');
  
 
