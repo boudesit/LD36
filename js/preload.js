@@ -35,7 +35,7 @@ preload.prototype = {
     	game.load.audio('gameSound', 'assets/sound/gameSound.mp3');
     	game.load.audio('introSound', 'assets/sound/introSound.mp3'); 
     	game.load.audio('loseSound', 'assets/sound/loseSound.mp3'); 
-  
+  		game.load.audio('explosionSound', 'assets/sound/explodeSound.mp3');
 	},
   	create: function(){
   		this.game.time.events.add(Phaser.Timer.SECOND * 2, this._startGame, this);	
