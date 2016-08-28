@@ -23,7 +23,6 @@ var enemyTabShot = new Array();
 
 
 Enemy.prototype.create = function create() {
-	console.log(this.spriteNo);
 	this.enemySprite = game.add.sprite(this.posX, this.posY, "enemy_" + this.type + this.spriteNo);
 	
 	// animation
