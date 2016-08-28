@@ -21,8 +21,8 @@ theGame.prototype = {
   		music = game.add.audio('gameSound',0.2, true);
 
     	this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'background');
-    	this.spriteBG.animations.add('backgroundAnime');
-    	this.spriteBG.animations.play('backgroundAnime', 5, true);
+    	this.spriteBG.animations.add('backgroundAnime', [0,1,2,3,2,1,0]);
+    	this.spriteBG.animations.play('backgroundAnime', 10, true);
 
   		if (music.isPlaying == false)
   		{
