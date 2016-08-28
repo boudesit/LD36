@@ -180,7 +180,6 @@ HeroManager.prototype = {
     _setIsJump : function(isJump) {
 
         this.isJump = isJump;
-        console.log(this.isJump);
     },
 
 
