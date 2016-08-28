@@ -30,6 +30,10 @@ preload.prototype = {
     	this.game.load.image('bullet', 'assets/img/bullet.png');
 		this.game.load.image("background", "assets/img/Game_BG.png");  
 
+		this.game.load.image("background1", "assets/img/game_bg11.png");  
+		this.game.load.image("background2", "assets/img/game_bg12.png");  
+		this.game.load.image("background3", "assets/img/game_bg13.png");  
+		this.game.load.image("background4", "assets/img/game_bg14.png");  
 
 		//Sound
     	game.load.audio('gameSound', 'assets/sound/gameSound.mp3');
