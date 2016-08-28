@@ -90,3 +90,10 @@ Enemy.prototype.getSprite = function getSprite() {
 Enemy.prototype.getEnemies = function getEnemies() {
 	return enemyTab;
 };
+
+Enemy.prototype.clearArray = function clearArray() {
+	for (var i = enemyTab.length; i > 0; i--) {
+ 
+ 		enemyTab.pop();
+ 	}
+ };
