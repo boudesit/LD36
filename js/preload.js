@@ -11,31 +11,25 @@ preload.prototype = {
 		this.game.load.spritesheet('explosion', 'assets/img/explode.png', 128, 128);
 
 
-		this.game.load.spritesheet('enemy_up', 'assets/img/enemy_up.png', 150,150,1); 
-		this.game.load.spritesheet('enemy_shot', 'assets/img/enemy_shot.png', 150,75,1); 
-		this.game.load.spritesheet('enemy_down', 'assets/img/enemy_down.png', 128, 128,1);
+		this.game.load.spritesheet('enemy_up', 'assets/img/enemy1_1900.png', 50, 50,2); 
+		this.game.load.spritesheet('enemy_shot', 'assets/img/enemy1_1900.png', 50, 50,2); 
+		this.game.load.spritesheet('enemy_down', 'assets/img/enemy1_1900.png', 50, 50,2);
 
 
 		this.game.load.spritesheet('perso_ss', 'assets/img/perso_ss_1742.png', 100,100,3); 
 		this.game.load.spritesheet('perso_ss2', 'assets/img/perso_small_1813.png', 91,50,1); 
 		this.game.load.spritesheet('perso_ss3', 'assets/img/pero_death_1858.png', 100,100,1); 
 
-		this.game.load.image("spritesheet", "assets/img/game_bg_1805.png",800,600,2);  
+		this.game.load.spritesheet("background", "assets/img/game_bg_1805.png",800,600,4);  
 
 		this.game.load.spritesheet('strike', 'assets/img/strike.png', 600,300,1); 
-/*		this.game.load.spritesheet('enemy_down', 'assets/img/enemy_down.png', 128, 128,1);
-*/
+
 
 		//Image
 		this.game.load.image("gametitle","assets/img/gametitle.jpg");
 		this.game.load.image("gameover","assets/img/gameover.jpg");
     	this.game.load.image('bullet', 'assets/img/bullet.png');
-		this.game.load.image("background", "assets/img/Game_BG.png");  
-
-		this.game.load.image("background1", "assets/img/game_bg11.png");  
-		this.game.load.image("background2", "assets/img/game_bg12.png");  
-		this.game.load.image("background3", "assets/img/game_bg13.png");  
-		this.game.load.image("background4", "assets/img/game_bg14.png");  
+ 
 
 		//Sound
     	game.load.audio('gameSound', 'assets/sound/gameSound.mp3');
