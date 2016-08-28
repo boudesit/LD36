@@ -3,9 +3,12 @@ var HeroManager = function(game) {
 	this.sprite = null;
 	this.spriteSlip = null;
     this.spriteJump = null;
+    this.spriteDeath = null;
 	this.posX = 200;
 
-	this.posY = 400;
+	this.posY = 390;
+    this.posYSlip = 455;
+
 	this.isDead = false;
     this.fireButton = null;
     this.weapon = null;
@@ -17,7 +20,7 @@ HeroManager.prototype = {
     create: function() {
 
 	this.sprite = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
-	this.sprite.animations.add('idle', [0,1]);
+	this.sprite.animations.add('idle', [0,1,2]);
 	this.game.physics.arcade.enable(this.sprite);
 	this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
 
@@ -26,8 +29,8 @@ HeroManager.prototype = {
 
     this.sprite.body.collideWorldBounds=true;
 
-   	this.spriteSlip = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
-	this.spriteSlip.animations.add('slip', [3]);
+   	this.spriteSlip = this.game.add.sprite(this.posX,this.posYSlip, 'perso_ss2');
+	this.spriteSlip.animations.add('slip', [0]);
 	this.game.physics.arcade.enable(this.spriteSlip);
 	this.spriteSlip.physicsBodyType = Phaser.Physics.ARCADE;
 	this.spriteSlip.enableBody = true;
@@ -48,17 +51,25 @@ HeroManager.prototype = {
     this.spriteJump.visible = false;
 
 
+
     //  Creates 1 single bullet, using the 'bullet' graphic
     this.weapon = this.game.add.weapon(1, 'strike');
     this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
     this.weapon.bulletSpeed = 400; 
-    this.weapon.trackSprite(this.sprite, 1, 0);
+    this.weapon.enableBody = true;
+    this.weapon.physicsBodyType = Phaser.Physics.ARCADE;
+    this.weapon.trackSprite(this.sprite, 50, 10);
     this.weapon.fireAngle = 0;
+
+
     },
 
     update: function() {
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == 400){
+        console.log(this.spriteJump.position.y);
+        console.log(this.sprite.position.y);
+        console.log(this.spriteSlip.position.y);
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
 
     		this._jump();
     	} else if(this.spriteJump.position.y < 215 ) {
@@ -66,10 +77,10 @@ HeroManager.prototype = {
     		this._ohGravity();
     	} 
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.sprite.position.y == 400){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
     		this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
-            console.log("coucou");
+
 	    	this.sprite.visible = true;
 	    	this.spriteSlip.visible = false;
     	}
@@ -87,6 +98,29 @@ HeroManager.prototype = {
             this._recreateSprite();
         }
 
+        if(this._getIsDead()) {
+            if(this.spriteDeath != null) {
+                this.spriteDeath.kill();
+            }
+
+            this.spriteDeath = this.game.add.sprite(this.posX,this._getSprite().position.y, 'perso_ss3');
+            this.spriteDeath.animations.add('death', [0]);
+            this.game.physics.arcade.enable(this.spriteDeath);
+            this.spriteDeath.physicsBodyType = Phaser.Physics.ARCADE;
+            this.spriteDeath.enableBody = true;
+            this.spriteDeath.animations.play('death', 0, true);
+
+            this.spriteDeath.body.collideWorldBounds=true;
+            this.spriteDeath.visible = true;
+            this.spriteSlip.visible = false;
+            this.sprite.visible = false;
+            this.spriteJump.visible = false;
+
+
+
+
+        }
+
     },
 
 
@@ -95,7 +129,7 @@ HeroManager.prototype = {
         this.sprite.visible = false;
         this.spriteJump.visible = true;
 
-    	this.spriteJump.body.velocity.y = -1000;
+    	this.spriteJump.body.velocity.y = -500;
     },
 
     _ohGravity : function(){
@@ -158,5 +192,20 @@ HeroManager.prototype = {
         return this.isJump;
     },
 
+    _getFire: function() {
 
+        return this.weapon.bullets;
+    },
+
+    _killFire: function() {
+
+        this.weapon.destroy();
+
+        //  Creates 1 single bullet, using the 'bullet' graphic
+        this.weapon = this.game.add.weapon(1, 'strike');
+        this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+        this.weapon.bulletSpeed = 400; 
+        this.weapon.trackSprite(this.sprite, 50, 10);
+        this.weapon.fireAngle = 0;
+    }
 }

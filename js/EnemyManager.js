@@ -1,10 +1,12 @@
 var EnemyManager = function(game) {
-	this.currentSpeed = -300;
+	this.currentSpeed = -400;
 	this.upSpeed = -20;
 	this.currentEnemy = null;
 	this.outOfGamePos = 50;
 	this.spawnClock = null;
 	this.maxSpeed = -700;
+	this.explosion = null;
+	this.explosionSound = null;
 }
 
 EnemyManager.prototype = {
@@ -13,19 +15,20 @@ EnemyManager.prototype = {
 		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
 		this.currentEnemy.create();
 		this.spawnClock = new SpawnClock(game);
+		this.explosionSound = game.add.audio('explosionSound');
+		this.explosion  = game.add.sprite(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50, 'explosion');
     },
 
     update: function() {
 		if (this._isEnemyDead() && !this._isSpriteDestroy()) {
 			this._killEnemy();
-			this._startSpawnClock();
 		}else if (this._OutOfGamePosition()) {
 			this._destroyEnemy();
-			this._startSpawnClock();
 		}else {
 			this.currentEnemy.update();
 		}		
-		
+		this._startSpawnClock();
+
 		this._initEnemyAndStopClock();
     },
 	
@@ -43,15 +46,20 @@ EnemyManager.prototype = {
 	},
 	
 	_destroyEnemy : function () {
+
+		//TODO Changer la condition a cause du update c'est lancer plein de foit 
 		this.currentEnemy.destroy();
 	},
 	
 	_killEnemy : function () {
+
+		//TODO Changer la condition a cause du update c'est lancer plein de foit 
+
 		this.currentEnemy.kill();
 	},
 	
 	_initEnemy : function() {
-		this._upCurrentSpeed();
+		//this._upCurrentSpeed();
 		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
 		this.currentEnemy.create();
 		this.currentEnemy.update();
@@ -87,5 +95,13 @@ EnemyManager.prototype = {
 
 	_randomIntFromInterval : function(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) + min);
+	},
+
+	_explode : function(min, max) {
+			this.explosion.reset(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50);
+	        this.explosion.animations.add('boom');
+	        this.explosion.play('boom', 30, false , true);
+			this.explosionSound.play();
 	}
+
 }
