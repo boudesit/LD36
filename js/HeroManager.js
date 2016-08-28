@@ -80,7 +80,7 @@ HeroManager.prototype = {
     	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == 400){
     		this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
-            console.log("coucou");
+
 	    	this.sprite.visible = true;
 	    	this.spriteSlip.visible = false;
     	}
