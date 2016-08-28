@@ -61,6 +61,7 @@ theGame.prototype = {
 
 	lose: function() {
 		music.pause();
+    this.ennemy.getEnemy().clearArray();
 		this.game.state.start("GameOver");	
 	},
 
