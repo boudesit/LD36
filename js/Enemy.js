@@ -16,6 +16,8 @@ function Enemy(game, velocity, type) {
 var types = ["up", "down", "shot"];
 var yDiff = [100, 0, 50];
 var animation = 15;
+var enemyTab = new Array();
+
 
 Enemy.prototype.create = function create() {
 	this.enemySprite = game.add.sprite(this.posX, this.posY, "enemy_" + this.type);
@@ -26,6 +28,8 @@ Enemy.prototype.create = function create() {
 	this.game.physics.arcade.enable(this.enemySprite);
 	this.enemySprite.enableBody = true;
 	this.enemySprite.body.velocity.x = this.velocity;
+
+	enemyTab.push(this.enemySprite);
 };
 
 Enemy.prototype.update = function update() {
@@ -81,4 +85,8 @@ Enemy.prototype.getType = function getType() {
 
 Enemy.prototype.getSprite = function getSprite() {
     return this.enemySprite;
+};
+
+Enemy.prototype.getEnemies = function getEnemies() {
+	return enemyTab;
 };

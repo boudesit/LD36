@@ -3,6 +3,7 @@ var HeroManager = function(game) {
 	this.sprite = null;
 	this.spriteSlip = null;
     this.spriteJump = null;
+    this.spriteDeath = null;
 	this.posX = 200;
 
 	this.posY = 400;
@@ -48,6 +49,7 @@ HeroManager.prototype = {
     this.spriteJump.visible = false;
 
 
+
     //  Creates 1 single bullet, using the 'bullet' graphic
     this.weapon = this.game.add.weapon(1, 'strike');
     this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
@@ -70,7 +72,7 @@ HeroManager.prototype = {
     		this._ohGravity();
     	} 
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == 400){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == 400){
     		this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
             console.log("coucou");
@@ -91,6 +93,29 @@ HeroManager.prototype = {
             this._recreateSprite();
         }
 
+        if(this._getIsDead()) {
+            if(this.spriteDeath != null) {
+                this.spriteDeath.kill();
+            }
+
+            this.spriteDeath = this.game.add.sprite(this.posX,this._getSprite().position.y, 'perso_ss');
+            this.spriteDeath.animations.add('death', [4]);
+            this.game.physics.arcade.enable(this.spriteDeath);
+            this.spriteDeath.physicsBodyType = Phaser.Physics.ARCADE;
+            this.spriteDeath.enableBody = true;
+            this.spriteDeath.animations.play('death', 0, true);
+
+            this.spriteDeath.body.collideWorldBounds=true;
+            this.spriteDeath.visible = true;
+            this.spriteSlip.visible = false;
+            this.sprite.visible = false;
+            this.spriteJump.visible = false;
+
+
+
+
+        }
+
     },
 
 
@@ -99,7 +124,7 @@ HeroManager.prototype = {
         this.sprite.visible = false;
         this.spriteJump.visible = true;
 
-    	this.spriteJump.body.velocity.y = -1000;
+    	this.spriteJump.body.velocity.y = -500;
     },
 
     _ohGravity : function(){
