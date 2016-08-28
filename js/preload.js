@@ -15,9 +15,9 @@ preload.prototype = {
 		this.game.load.spritesheet('enemy_up1', 'assets/img/enemy1_1900.png', 50, 50,2); 
 		this.game.load.spritesheet('enemy_up2', 'assets/img/enemy1_1900.png', 50, 50,2); 
 
-		this.game.load.spritesheet('enemy_shot0', 'assets/img/enemy1_1900.png', 50, 50,2); 
-		this.game.load.spritesheet('enemy_shot1', 'assets/img/enemy1_1900.png', 50, 50,2); 
-		this.game.load.spritesheet('enemy_shot2', 'assets/img/enemy1_1900.png', 50, 50,2); 
+		this.game.load.spritesheet('enemy_shot0', 'assets/img/enemy4_2007.png', 50, 150,4); 
+		this.game.load.spritesheet('enemy_shot1', 'assets/img/enemy4_2007.png', 50, 150,4); 
+		this.game.load.spritesheet('enemy_shot2', 'assets/img/enemy4_2007.png', 50, 150,4); 
 
 		this.game.load.spritesheet('enemy_down0', 'assets/img/enemy1_1900.png', 50, 50,2);
 		this.game.load.spritesheet('enemy_down1', 'assets/img/enemy2_1915.png', 50, 50,2);
