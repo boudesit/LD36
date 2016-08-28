@@ -3,7 +3,7 @@ var SpawnClock = function(game) {
 	this.isSpawnAllowed = false;
 	this.timer = null;
 	this.startSpawn = 0.8;
-	this.startDownSpawn = -0,3;
+	this.startDownSpawn = -0,5;
 }
 
 SpawnClock.prototype = {
