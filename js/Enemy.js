@@ -10,7 +10,7 @@ function Enemy(game, velocity, type, spriteNumber) {
 	this.posY = 450 - yDiff[tabPos];
 	this.isDead = false;
 	this.isDraw = false;
-	this.spriteNo = spriteNumber % 3;
+	this.spriteNo = spriteNumber % 4;
 	this.isSpriteDestroy;
 	this.enemiesOut = 0;
 };
@@ -23,6 +23,7 @@ var enemyTabShot = new Array();
 
 
 Enemy.prototype.create = function create() {
+	console.log(this.spriteNo);
 	this.enemySprite = game.add.sprite(this.posX, this.posY, "enemy_" + this.type + this.spriteNo);
 	
 	// animation
