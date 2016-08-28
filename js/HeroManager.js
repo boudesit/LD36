@@ -7,7 +7,7 @@ var HeroManager = function(game) {
 	this.posX = 200;
 
 	this.posY = 390;
-    this.posYSlip = 455;
+    this.posYSlip = 450;
 
 	this.isDead = false;
     this.fireButton = null;
@@ -20,7 +20,7 @@ HeroManager.prototype = {
     create: function() {
 
 	this.sprite = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
-	this.sprite.animations.add('idle', [0,1,2]);
+	this.sprite.animations.add('idle', [0,1]);
 	this.game.physics.arcade.enable(this.sprite);
 	this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
 
