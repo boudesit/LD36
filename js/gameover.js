@@ -1,4 +1,5 @@
-var gameOver = function(game){}
+var gameOver = function(game){
+}
 
 gameOver.prototype = {
 	
@@ -12,10 +13,12 @@ gameOver.prototype = {
     	}else{
     		loseSound.resume();
     	}	
-
   		var gameOverTitle = this.game.add.sprite(0,0,"gameover");
 		
+    	var style = { font: "32px Arial", fill: "#000000", align: "center" };
 
+    	text = game.add.text(450, 325, this.game.scoreTotal, style);
+		
 		this.restartButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		this.restartButton.onDown.add(this.playTheGame, this);
 	},
