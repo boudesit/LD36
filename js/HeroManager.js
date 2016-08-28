@@ -6,7 +6,7 @@ var HeroManager = function(game) {
     this.spriteDeath = null;
 	this.posX = 200;
 
-	this.posY = 400;
+	this.posY = 390;
     this.posYSlip = 455;
 
 	this.isDead = false;
@@ -69,7 +69,7 @@ HeroManager.prototype = {
         console.log(this.spriteJump.position.y);
         console.log(this.sprite.position.y);
         console.log(this.spriteSlip.position.y);
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == 400){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
 
     		this._jump();
     	} else if(this.spriteJump.position.y < 215 ) {
@@ -77,10 +77,10 @@ HeroManager.prototype = {
     		this._ohGravity();
     	} 
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == 400){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
     		this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
-            console.log("coucou");
+
 	    	this.sprite.visible = true;
 	    	this.spriteSlip.visible = false;
     	}

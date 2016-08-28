@@ -48,29 +48,12 @@ EnemyManager.prototype = {
 	_destroyEnemy : function () {
 
 		//TODO Changer la condition a cause du update c'est lancer plein de foit 
-		if ( this.explosionSound.isPlaying == false)
-  		{
-			//this.explosion  = game.add.sprite(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50, 'explosion');
-			this.explosion.reset(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50);
-	        this.explosion.animations.add('boom');
-	        this.explosion.play('boom', 30, false , true);
-	 		this.explosionSound.play();
-		}
-
 		this.currentEnemy.destroy();
 	},
 	
 	_killEnemy : function () {
 
 		//TODO Changer la condition a cause du update c'est lancer plein de foit 
-		if (this.explosionSound.isPlaying === false)
-  		{
-			
-			this.explosion.reset(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50);
-	        this.explosion.animations.add('boom');
-	        this.explosion.play('boom', 30, false , true);
-			this.explosionSound.play();
-		}
 
 		this.currentEnemy.kill();
 	},
@@ -112,5 +95,13 @@ EnemyManager.prototype = {
 
 	_randomIntFromInterval : function(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) + min);
+	},
+
+	_explode : function(min, max) {
+			this.explosion.reset(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50);
+	        this.explosion.animations.add('boom');
+	        this.explosion.play('boom', 30, false , true);
+			this.explosionSound.play();
 	}
+
 }
