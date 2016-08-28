@@ -22,14 +22,13 @@ EnemyManager.prototype = {
     update: function() {
 		if (this._isEnemyDead() && !this._isSpriteDestroy()) {
 			this._killEnemy();
-			this._startSpawnClock();
 		}else if (this._OutOfGamePosition()) {
 			this._destroyEnemy();
-			this._startSpawnClock();
 		}else {
 			this.currentEnemy.update();
 		}		
-		
+		this._startSpawnClock();
+
 		this._initEnemyAndStopClock();
     },
 	

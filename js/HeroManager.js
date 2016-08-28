@@ -7,6 +7,8 @@ var HeroManager = function(game) {
 	this.posX = 200;
 
 	this.posY = 400;
+    this.posYSlip = 455;
+
 	this.isDead = false;
     this.fireButton = null;
     this.weapon = null;
@@ -18,7 +20,7 @@ HeroManager.prototype = {
     create: function() {
 
 	this.sprite = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
-	this.sprite.animations.add('idle', [0,1]);
+	this.sprite.animations.add('idle', [0,1,2]);
 	this.game.physics.arcade.enable(this.sprite);
 	this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
 
@@ -27,8 +29,8 @@ HeroManager.prototype = {
 
     this.sprite.body.collideWorldBounds=true;
 
-   	this.spriteSlip = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
-	this.spriteSlip.animations.add('slip', [3]);
+   	this.spriteSlip = this.game.add.sprite(this.posX,this.posYSlip, 'perso_ss2');
+	this.spriteSlip.animations.add('slip', [0]);
 	this.game.physics.arcade.enable(this.spriteSlip);
 	this.spriteSlip.physicsBodyType = Phaser.Physics.ARCADE;
 	this.spriteSlip.enableBody = true;
@@ -64,6 +66,9 @@ HeroManager.prototype = {
 
     update: function() {
 
+        console.log(this.spriteJump.position.y);
+        console.log(this.sprite.position.y);
+        console.log(this.spriteSlip.position.y);
     	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == 400){
 
     		this._jump();
@@ -98,8 +103,8 @@ HeroManager.prototype = {
                 this.spriteDeath.kill();
             }
 
-            this.spriteDeath = this.game.add.sprite(this.posX,this._getSprite().position.y, 'perso_ss');
-            this.spriteDeath.animations.add('death', [4]);
+            this.spriteDeath = this.game.add.sprite(this.posX,this._getSprite().position.y, 'perso_ss3');
+            this.spriteDeath.animations.add('death', [0]);
             this.game.physics.arcade.enable(this.spriteDeath);
             this.spriteDeath.physicsBodyType = Phaser.Physics.ARCADE;
             this.spriteDeath.enableBody = true;
