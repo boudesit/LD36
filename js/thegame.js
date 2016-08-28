@@ -41,6 +41,7 @@ theGame.prototype = {
 		this.heroManager._setIsDead(true);
         game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
 		music.pause();
+    this.ennemy.getEnemy().clearArray();
 		this.game.state.start("GameOver");	
 	},
 
