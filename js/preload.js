@@ -20,22 +20,16 @@ preload.prototype = {
 		this.game.load.spritesheet('perso_ss2', 'assets/img/perso_ss2.png', 54,45,1); 
 		this.game.load.spritesheet('perso_ss3', 'assets/img/perso_ss3.png', 100,88,1); 
 
-		this.game.load.image("spritesheet", "assets/img/game_bg_1805.png",800,600,2);  
+		this.game.load.spritesheet("background", "assets/img/game_bg_1805.png",800,600,4);  
 
 		this.game.load.spritesheet('strike', 'assets/img/strike.png', 600,300,1); 
-/*		this.game.load.spritesheet('enemy_down', 'assets/img/enemy_down.png', 128, 128,1);
-*/
+
 
 		//Image
 		this.game.load.image("gametitle","assets/img/gametitle.jpg");
 		this.game.load.image("gameover","assets/img/gameover.jpg");
     	this.game.load.image('bullet', 'assets/img/bullet.png');
-		this.game.load.image("background", "assets/img/Game_BG.png");  
-
-		this.game.load.image("background1", "assets/img/game_bg11.png");  
-		this.game.load.image("background2", "assets/img/game_bg12.png");  
-		this.game.load.image("background3", "assets/img/game_bg13.png");  
-		this.game.load.image("background4", "assets/img/game_bg14.png");  
+ 
 
 		//Sound
     	game.load.audio('gameSound', 'assets/sound/gameSound.mp3');
