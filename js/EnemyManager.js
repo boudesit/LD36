@@ -1,5 +1,5 @@
 var EnemyManager = function(game) {
-	this.currentSpeed = -400;
+	this.currentSpeed = -800;
 	this.upSpeed = -20;
 	this.currentEnemy = null;
 	this.outOfGamePos = 50;
@@ -13,7 +13,6 @@ EnemyManager.prototype = {
 		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
 		this.currentEnemy.create();
 		this.spawnClock = new SpawnClock(game);
-		this.explosionSound = game.add.audio('explosionSound');
     },
 
     update: function() {

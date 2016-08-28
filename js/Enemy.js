@@ -14,9 +14,10 @@ function Enemy(game, velocity, type) {
 };
 
 var types = ["up", "down", "shot"];
-var yDiff = [100, 0, 50];
+var yDiff = [90, 0, 50];
 var animation = 15;
 var enemyTab = new Array();
+var enemyTabShot = new Array();
 
 
 Enemy.prototype.create = function create() {
@@ -29,7 +30,11 @@ Enemy.prototype.create = function create() {
 	this.enemySprite.enableBody = true;
 	this.enemySprite.body.velocity.x = this.velocity;
 
+	if(this.type === "shot"){
+		enemyTabShot.push(this.enemySprite);
+	}
 	enemyTab.push(this.enemySprite);
+
 };
 
 Enemy.prototype.update = function update() {
@@ -91,9 +96,17 @@ Enemy.prototype.getEnemies = function getEnemies() {
 	return enemyTab;
 };
 
+Enemy.prototype.getEnemiesShot = function getEnemies() {
+	return enemyTabShot;
+};
+
 Enemy.prototype.clearArray = function clearArray() {
 	for (var i = enemyTab.length; i > 0; i--) {
  
  		enemyTab.pop();
+ 	}
+	for (var i = enemyTabShot.length; i > 0; i--) {
+
+ 	 	enemyTabShot.pop();
  	}
  };
