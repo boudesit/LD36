@@ -38,7 +38,7 @@ theGame.prototype = {
 
       var isHit = game.physics.arcade.collide( this.heroManager._getFire() ,  this.ennemy.getEnemy().getSprite() , this.colisionManager.fireHitEnnemy , null, this);
       
-      if(isHit == true)
+      if(isHit)
       {
       	this.hit();
       	isHit = false;
@@ -46,8 +46,9 @@ theGame.prototype = {
 
       var isDead =  game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getSprite() , this.colisionManager.ennemyHitHero , null, this);
       
-      if(isDead == true)
+      if(isDead)
       {
+      	this.heroManager._setIsDead(true);
 		this.lose();
       }
 	
@@ -62,7 +63,5 @@ theGame.prototype = {
 	hit: function() {
 		this.ennemy.getEnemy().setisDead(true);
 		this.heroManager._killFire()
-
-		//this.ennemy.getEnemy().kill();
 	}
 }
