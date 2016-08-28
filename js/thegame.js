@@ -6,11 +6,8 @@ var theGame = function(game) {
     this.ennemy = null
     this.explosion = null;
 	this.explosionSound = null;
-<<<<<<< HEAD
 	this.shakeWorld = 0;
-=======
   this.spriteBG = null;
->>>>>>> refs/remotes/origin/branch_Tristan
 }
 
 theGame.prototype = {
