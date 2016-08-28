@@ -8,16 +8,11 @@ var theGame = function(game) {
 	this.explosionSound = null;
 	this.shakeWorld = 0;
   this.spriteBG = null;
-	this.white = "#FFFFFF";
-	this.score = 0;
-	this.enemiesOut = 0;
-	this.multiple = 50;
-	this.scoreText = null;
 }
 
 theGame.prototype = {
   	create: function() {
-		this.score = 0;
+
   		music = game.add.audio('gameSound',0.2, true);
 
   		game.stage.backgroundColor = "#d2e1c3";
@@ -42,8 +37,6 @@ theGame.prototype = {
 	  this.explosionSound = game.add.audio('explosionSound');
 	  this.explosion  = game.add.sprite(-100,-100, 'explosion');
 
-		this.scoreText = this.game.add.text(20, 20, "" + this._getScoreToDisplay(), { font: "30px Arial", fill: this.white});
-		this.scoreText.fontWeight = "bold";
 	},
 
 	update: function() {
@@ -66,10 +59,6 @@ theGame.prototype = {
 			game.world.setBounds(0, 0, game.width,game.height);
 		}
 
-		if (this.ennemy != undefined) {
-			this.enemiesOut = this.ennemy._getEnemiesOut();
-		}
-		this.scoreText.setText(this._getScoreToDisplay());
 	},
 
 	ennemyHitHero: function() {
@@ -89,20 +78,9 @@ theGame.prototype = {
 		this.shakeWorld = 20;
 		ennemy.kill();
 		fire.kill();
-
-		this._incrementScore();
 	},
 
 	lose: function() {
 		this.game.state.start("GameOver");	
-	},
-
-	_getScoreToDisplay : function() {
-		return (this.score + this.enemiesOut) * this.multiple;
-	},
-
-	_incrementScore : function() {
-		this.score++;
-		console.log("score:" + this.score);
 	}
 }

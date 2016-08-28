@@ -11,7 +11,6 @@ function Enemy(game, velocity, type) {
 	this.isDead = false;
 	this.isDraw = false;
 	this.isSpriteDestroy;
-	this.enemiesOut = 0;
 };
 
 var types = ["up", "down", "shot"];
@@ -39,12 +38,6 @@ Enemy.prototype.create = function create() {
 };
 
 Enemy.prototype.update = function update() {
-	for (var i = enemyTab.length; i > 0; i--) {
- 		if (enemyTab[i-1].x < 50 && enemyTab[i - 1].exists) {
-			enemyTab[i - 1].kill();
-			this.enemiesOut++;
-		}
- 	}
 };
 
 Enemy.prototype.destroy = function destroy() {
@@ -105,14 +98,6 @@ Enemy.prototype.getEnemies = function getEnemies() {
 
 Enemy.prototype.getEnemiesShot = function getEnemies() {
 	return enemyTabShot;
-};
-
-Enemy.prototype.getEnemiesOut = function() {
-	return this.enemiesOut;
-};
-
-Enemy.prototype.setEnemiesOut = function(nb) {
-	this.enemiesOut = nb;
 };
 
 Enemy.prototype.clearArray = function clearArray() {
