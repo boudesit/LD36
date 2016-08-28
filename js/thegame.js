@@ -21,10 +21,6 @@ theGame.prototype = {
     		music.resume();
     	}	
 
-
-  	  this.colisionManager = new ColisionManager();
-  	  this.colisionManager.create();
-
       this.heroManager = new HeroManager(this.game);
       this.heroManager.create();
 
@@ -34,19 +30,24 @@ theGame.prototype = {
 	},
 
 	update: function() {
-      this.heroManager.update();
-      var isDead =  game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getSprite() , this.colisionManager.ennemyHitHero , null, this);
-      
-      if(isDead == true)
-      {
-		this.lose();
-      }
-	
-	  this.ennemy.update();
+
+          this.heroManager.update();
+          game.physics.arcade.collide( this.heroManager._getFire() ,  this.ennemy.getEnemy().getEnemies() , this.fireHitEnnemy, null, this);
+          game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getEnemies() , this.ennemyHitHero, null, this);
+    	  this.ennemy.update();
 	},
 
-	lose: function() {
+	ennemyHitHero: function() {
+		this.heroManager._setIsDead(true);
+        game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
 		music.pause();
+    this.ennemy.getEnemy().clearArray();
 		this.game.state.start("GameOver");	
+	},
+
+	fireHitEnnemy: function() {
+		this.ennemy.getEnemy().setisDead(true);
+		this.ennemy._explode();
+		this.heroManager._killFire()
 	}
 }
