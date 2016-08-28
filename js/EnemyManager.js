@@ -5,8 +5,6 @@ var EnemyManager = function(game) {
 	this.outOfGamePos = 50;
 	this.spawnClock = null;
 	this.maxSpeed = -700;
-	this.explosion = null;
-	this.explosionSound = null;
 }
 
 EnemyManager.prototype = {
@@ -15,8 +13,6 @@ EnemyManager.prototype = {
 		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
 		this.currentEnemy.create();
 		this.spawnClock = new SpawnClock(game);
-		this.explosionSound = game.add.audio('explosionSound');
-		this.explosion  = game.add.sprite(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50, 'explosion');
     },
 
     update: function() {
@@ -98,10 +94,7 @@ EnemyManager.prototype = {
 	},
 
 	_explode : function(min, max) {
-			this.explosion.reset(this.currentEnemy.getPosX(),this.currentEnemy.getPosY() - 50);
-	        this.explosion.animations.add('boom');
-	        this.explosion.play('boom', 30, false , true);
-			this.explosionSound.play();
+
 	}
 
 }
