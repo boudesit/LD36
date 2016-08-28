@@ -82,7 +82,7 @@ HeroManager.prototype = {
 	    	this.spriteSlip.visible = false;
     	}
 
-        if ( game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP))
+        if ( game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) && !this._getIsJump())
         {
 
             this.weapon.fire();
