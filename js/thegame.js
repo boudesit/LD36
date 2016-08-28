@@ -102,6 +102,5 @@ theGame.prototype = {
 
 	_incrementScore : function() {
 		this.score++;
-		console.log("score:" + this.score);
 	}
 }
