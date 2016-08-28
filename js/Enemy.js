@@ -75,6 +75,10 @@ Enemy.prototype.getPosX = function getPosX(){
 	return this.enemySprite.x;
 };
 
+Enemy.prototype.getPosY = function getPosY(){
+	return this.enemySprite.y;
+};
+
 Enemy.prototype.getType = function getType() {
 	return this.type;
 };
