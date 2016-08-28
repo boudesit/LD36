@@ -66,9 +66,6 @@ HeroManager.prototype = {
 
     update: function() {
 
-        console.log(this.spriteJump.position.y);
-        console.log(this.sprite.position.y);
-        console.log(this.spriteSlip.position.y);
     	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
 
     		this._jump();
