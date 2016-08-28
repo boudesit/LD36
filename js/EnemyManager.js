@@ -1,16 +1,18 @@
 var EnemyManager = function(game) {
+	this.game = game;
 	this.currentSpeed = -550;
 	this.upSpeed = -10;
 	this.currentEnemy = null;
 	this.outOfGamePos = 50;
 	this.spawnClock = null;
 	this.maxSpeed = -1000;
+	this.enemiesOut = 0;
 }
 
 EnemyManager.prototype = {
     create: function() {
 		// random enemy
-		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
+		this.currentEnemy = new Enemy(this.game, this.currentSpeed, this._randomType());
 		this.currentEnemy.create();
 		this.spawnClock = new SpawnClock(game);
     },
@@ -26,6 +28,11 @@ EnemyManager.prototype = {
 		this._startSpawnClock();
 
 		this._initEnemyAndStopClock();
+	
+		if (this.currentEnemy.getEnemiesOut() > 0) {
+			this.currentEnemy.setEnemiesOut(this.currentEnemy.getEnemiesOut() - 1);
+			this.enemiesOut++;
+		}
     },
 	
 	_initEnemyAndStopClock : function () {
@@ -95,6 +102,10 @@ EnemyManager.prototype = {
 
 	_explode : function(min, max) {
 
+	},
+	
+	_getEnemiesOut : function() {
+		return this.enemiesOut;
 	}
 
 }
