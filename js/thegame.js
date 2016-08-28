@@ -49,7 +49,7 @@ theGame.prototype = {
       if(isDead)
       {
       	this.heroManager._setIsDead(true);
-		this.lose();
+        game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
       }
 	
 	  this.ennemy.update();
