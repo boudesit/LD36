@@ -19,6 +19,7 @@ ColisionManager.prototype.ennemyHitHero = function ennemyHitHero(player,ennemy) 
 
 
 ColisionManager.prototype.fireHitEnnemy = function Colision(fire,ennemy) {
+
   return true;
 };
 
