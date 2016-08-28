@@ -15,7 +15,7 @@ function Enemy(game, velocity, type, spriteNumber) {
 };
 
 var types = ["up", "down", "shot"];
-var yDiff = [90, 0, 50];
+var yDiff = [90, 0, 100];
 var animation = 15;
 var enemyTab = new Array();
 var enemyTabShot = new Array();
