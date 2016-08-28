@@ -6,6 +6,7 @@ var theGame = function(game) {
     this.ennemy = null
     this.explosion = null;
 	this.explosionSound = null;
+	this.shakeWorld = 0;
 }
 
 theGame.prototype = {
@@ -31,6 +32,7 @@ theGame.prototype = {
 
 	  this.explosionSound = game.add.audio('explosionSound');
 	  this.explosion  = game.add.sprite(-100,-100, 'explosion');
+
 	},
 
 	update: function() {
@@ -39,6 +41,20 @@ theGame.prototype = {
         game.physics.arcade.overlap( this.heroManager._getFire() ,  this.ennemy.getEnemy().getEnemies() , this.fireHitEnnemy, null, this);
         game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getEnemies() , this.ennemyHitHero, null, this);
     	this.ennemy.update();
+
+
+	  if (this.shakeWorld > 0) 
+		{
+			var rand1 = game.rnd.integerInRange(-5,5);
+			var rand2 = game.rnd.integerInRange(-5,5);
+			game.world.setBounds(rand1, rand2, game.width + rand1, game.height + rand2);
+			this.shakeWorld--;
+		}
+
+		if (this.shakeWorld == 0) {
+			game.world.setBounds(0, 0, game.width,game.height);
+		}
+
 	},
 
 	ennemyHitHero: function() {
@@ -46,7 +62,7 @@ theGame.prototype = {
         game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
 		music.pause();
     	this.ennemy.getEnemy().clearArray();
-		this.game.state.start("GameOver");	
+
 	},
 
 	fireHitEnnemy: function(fire,ennemy) {
@@ -55,10 +71,12 @@ theGame.prototype = {
 	    this.explosion.animations.add('boom');
 	    this.explosion.play('boom', 30, false , true);
 		this.explosionSound.play();
-
+		this.shakeWorld = 20;
 		ennemy.kill();
 		fire.kill();
-		this.ennemy._explode();
-		this.heroManager._killFire()
+	},
+
+	lose: function() {
+		this.game.state.start("GameOver");	
 	}
 }
