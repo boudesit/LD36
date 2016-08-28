@@ -14,14 +14,17 @@ preload.prototype = {
 		this.game.load.spritesheet('enemy_up0', 'assets/img/enemy5_2025.png', 41, 50,2); 
 		this.game.load.spritesheet('enemy_up1', 'assets/img/enemy6_2055.png', 50, 49,2); 
 		this.game.load.spritesheet('enemy_up2', 'assets/img/enemy9_2223.png', 50, 50,2); 
+		this.game.load.spritesheet('enemy_up3', 'assets/img/enemy7_2101.png', 50, 50,2); 
 
 		this.game.load.spritesheet('enemy_shot0', 'assets/img/enemy4_2007.png', 50, 150,4); 
 		this.game.load.spritesheet('enemy_shot1', 'assets/img/enemy8_2209.png', 50, 150,3); 
 		this.game.load.spritesheet('enemy_shot2', 'assets/img/enemy4_2007.png', 50, 150,4); 
+		this.game.load.spritesheet('enemy_shot3', 'assets/img/enemy8_2209.png', 50, 150,3); 
 
 		this.game.load.spritesheet('enemy_down0', 'assets/img/enemy1_1900.png', 50, 50,2);
 		this.game.load.spritesheet('enemy_down1', 'assets/img/enemy2_1915.png', 50, 50,2);
 		this.game.load.spritesheet('enemy_down2', 'assets/img/enemy3_1934.png', 49, 51,2);
+		this.game.load.spritesheet('enemy_down3', 'assets/img/enemy3_1934.png', 49, 51,2);
 
 
 		this.game.load.spritesheet('perso_ss', 'assets/img/perso_ss_1742.png', 100,100,3); 
@@ -34,7 +37,7 @@ preload.prototype = {
 
 
 		//Image
-		this.game.load.image("gametitle","assets/img/gametitle.jpg");
+		this.game.load.image("gametitle","assets/img/game_start.png");
 		this.game.load.image("gameover","assets/img/gameover.jpg");
     	this.game.load.image('bullet', 'assets/img/bullet.png');
  

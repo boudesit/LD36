@@ -10,7 +10,7 @@ function Enemy(game, velocity, type, spriteNumber) {
 	this.posY = 450 - yDiff[tabPos];
 	this.isDead = false;
 	this.isDraw = false;
-	this.spriteNo = spriteNumber % 3;
+	this.spriteNo = spriteNumber % 4;
 	this.isSpriteDestroy;
 	this.enemiesOut = 0;
 };
