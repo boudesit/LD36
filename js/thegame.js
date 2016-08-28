@@ -99,7 +99,9 @@ theGame.prototype = {
 	_getScoreToDisplay : function() {
 		var bonus = this._getBonus();
 		var nb = (this.score + this.enemiesOut);
-		return nb * this.multiple + bonus;
+		var total = nb * this.multiple + bonus;
+		this.game.scoreTotal = nb * this.multiple + bonus;
+		return total;
 	},
 
 	_incrementScore : function() {
