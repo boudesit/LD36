@@ -1,4 +1,4 @@
-function Enemy(game, velocity, type) {
+function Enemy(game, velocity, type, spriteNumber) {
 	var tabPos = type % 3;
 	this.game = game;
 	this.enemySprite = null;
@@ -10,6 +10,7 @@ function Enemy(game, velocity, type) {
 	this.posY = 450 - yDiff[tabPos];
 	this.isDead = false;
 	this.isDraw = false;
+	this.spriteNo = spriteNumber % 3;
 	this.isSpriteDestroy;
 };
 
@@ -21,13 +22,13 @@ var enemyTabShot = new Array();
 
 
 Enemy.prototype.create = function create() {
-	this.enemySprite = game.add.sprite(this.posX, this.posY, "enemy_" + this.type);
+	this.enemySprite = game.add.sprite(this.posX, this.posY, "enemy_" + this.type + this.spriteNo);
 	
 	// animation
 	// TODO : code
 	
 	this.game.physics.arcade.enable(this.enemySprite);
-	this.enemySprite.animations.add('idle', [0,1]);
+	this.enemySprite.animations.add('idle');
 	this.enemySprite.enableBody = true;
 	this.enemySprite.body.velocity.x = this.velocity;
 	this.enemySprite.animations.play('idle', 5, true);
