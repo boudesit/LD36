@@ -31,15 +31,15 @@ theGame.prototype = {
 
 	update: function() {
 
-          this.heroManager.update();
-          game.physics.arcade.collide( this.heroManager._getFire() ,  this.ennemy.getEnemy().getEnemies() , this.fireHitEnnemy, null, this);
-          game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getEnemies() , this.ennemyHitHero, null, this);
-    	  this.ennemy.update();
+    this.heroManager.update();
+    game.physics.arcade.collide( this.heroManager._getFire() ,  this.ennemy.getEnemy().getEnemiesShot() , this.fireHitEnnemy, null, this);
+    game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getEnemies() , this.ennemyHitHero, null, this);
+    this.ennemy.update();
 	},
 
 	ennemyHitHero: function() {
 		this.heroManager._setIsDead(true);
-        game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
+    game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
 		music.pause();
     this.ennemy.getEnemy().clearArray();
 		this.game.state.start("GameOver");	
