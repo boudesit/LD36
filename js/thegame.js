@@ -6,6 +6,7 @@ var theGame = function(game) {
     this.ennemy = null
     this.explosion = null;
 	this.explosionSound = null;
+  this.spriteBG = null;
 }
 
 theGame.prototype = {
@@ -14,7 +15,10 @@ theGame.prototype = {
   		music = game.add.audio('gameSound',0.2, true);
 
   		game.stage.backgroundColor = "#d2e1c3";
-  		game.add.tileSprite(0 , 0, 800, 600, 'background');
+  		this.spriteBG = game.add.tileSprite(0 , 0, 800, 600, 'spritesheet');
+      this.spriteBG.animations.add('spritesheet');
+      this.spriteBG.animations.play('spritesheet', 1, true);
+
 
   		if (music.isPlaying == false)
   		{
