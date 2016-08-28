@@ -97,10 +97,25 @@ theGame.prototype = {
 	},
 
 	_getScoreToDisplay : function() {
-		return (this.score + this.enemiesOut) * this.multiple;
+		var bonus = this._getBonus();
+		var nb = (this.score + this.enemiesOut);
+		return nb * this.multiple + bonus;
 	},
 
 	_incrementScore : function() {
 		this.score++;
+	},
+
+	_getBonus : function() {
+		var nb = (this.score + this.enemiesOut);
+		if (nb > 10) {
+			if (nb % 10 == 0) {
+				return ((nb / 10) - 1) * this.multiple;
+			} else {
+				return ~~(nb / 10) * this.multiple;
+			}
+		} else{
+			return 0;
+		}
 	}
 }
