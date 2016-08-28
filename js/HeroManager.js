@@ -69,7 +69,7 @@ HeroManager.prototype = {
     	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
 
     		this._jump();
-    	} else if(this.spriteJump.position.y < 215 ) {
+    	} else if(this.spriteJump.position.y < 250 ) {
 
     		this._ohGravity();
     	} 
