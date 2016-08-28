@@ -3,6 +3,7 @@ var HeroManager = function(game) {
 	this.sprite = null;
 	this.spriteSlip = null;
     this.spriteJump = null;
+    this.spriteDeath = null;
 	this.posX = 200;
 
 	this.posY = 400;
@@ -47,6 +48,16 @@ HeroManager.prototype = {
     this.spriteJump.body.collideWorldBounds=true;
     this.spriteJump.visible = false;
 
+    this.spriteDeath = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
+    this.spriteDeath.animations.add('death', [4]);
+    this.game.physics.arcade.enable(this.spriteDeath);
+    this.spriteDeath.physicsBodyType = Phaser.Physics.ARCADE;
+    this.spriteDeath.enableBody = true;
+    this.spriteDeath.animations.play('death', 0, true);
+
+    this.spriteDeath.body.collideWorldBounds=true;
+    this.spriteDeath.visible = false;
+
 
     //  Creates 1 single bullet, using the 'bullet' graphic
     this.weapon = this.game.add.weapon(1, 'strike');
@@ -85,6 +96,16 @@ HeroManager.prototype = {
             this._setIsJump(false);
 
             this._recreateSprite();
+        }
+
+        if(this._getIsDead()) {
+
+            this.spriteDeath.visible = true;
+            this.spriteSlip.visible = false;
+            this.sprite.visible = false;
+            this.spriteJump.visible = false;
+
+
         }
 
     },
