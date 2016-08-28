@@ -38,7 +38,7 @@ theGame.prototype = {
 	update: function() {
 
         this.heroManager.update();
-        game.physics.arcade.overlap( this.heroManager._getFire() ,  this.ennemy.getEnemy().getEnemies() , this.fireHitEnnemy, null, this);
+        game.physics.arcade.overlap( this.heroManager._getFire() ,  this.ennemy.getEnemy().getEnemiesShot() , this.fireHitEnnemy, null, this);
         game.physics.arcade.collide(this.heroManager._getSprite() ,  this.ennemy.getEnemy().getEnemies() , this.ennemyHitHero, null, this);
     	this.ennemy.update();
 
