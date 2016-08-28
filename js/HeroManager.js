@@ -66,10 +66,10 @@ HeroManager.prototype = {
 
     update: function() {
 
-    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
+    	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == this.posY){
 
     		this._jump();
-    	} else if(this.spriteJump.position.y < 215 ) {
+    	} else if(this.spriteJump.position.y < 250 ) {
 
     		this._ohGravity();
     	} 
@@ -82,7 +82,7 @@ HeroManager.prototype = {
 	    	this.spriteSlip.visible = false;
     	}
 
-        if ( game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
+        if ( game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) && !this._getIsJump())
         {
 
             this.weapon.fire();
@@ -180,7 +180,6 @@ HeroManager.prototype = {
     _setIsJump : function(isJump) {
 
         this.isJump = isJump;
-        console.log(this.isJump);
     },
 
 
