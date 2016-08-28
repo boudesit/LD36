@@ -7,7 +7,7 @@ var HeroManager = function(game) {
 	this.posX = 200;
 
 	this.posY = 390;
-    this.posYSlip = 455;
+    this.posYSlip = 450;
 
 	this.isDead = false;
     this.fireButton = null;
@@ -20,7 +20,7 @@ HeroManager.prototype = {
     create: function() {
 
 	this.sprite = this.game.add.sprite(this.posX,this.posY, 'perso_ss');
-	this.sprite.animations.add('idle', [0,1,2]);
+	this.sprite.animations.add('idle', [0,1]);
 	this.game.physics.arcade.enable(this.sprite);
 	this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
 
@@ -55,10 +55,10 @@ HeroManager.prototype = {
     //  Creates 1 single bullet, using the 'bullet' graphic
     this.weapon = this.game.add.weapon(1, 'strike');
     this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-    this.weapon.bulletSpeed = 400; 
+    this.weapon.bulletSpeed = 600; 
     this.weapon.enableBody = true;
     this.weapon.physicsBodyType = Phaser.Physics.ARCADE;
-    this.weapon.trackSprite(this.sprite, 50, 10);
+    this.weapon.trackSprite(this.sprite, 100, 35);
     this.weapon.fireAngle = 0;
 
 
@@ -200,8 +200,8 @@ HeroManager.prototype = {
         //  Creates 1 single bullet, using the 'bullet' graphic
         this.weapon = this.game.add.weapon(1, 'strike');
         this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-        this.weapon.bulletSpeed = 400; 
-        this.weapon.trackSprite(this.sprite, 50, 10);
+        this.weapon.bulletSpeed = 600; 
+        this.weapon.trackSprite(this.sprite, 100, 35);
         this.weapon.fireAngle = 0;
     }
 }

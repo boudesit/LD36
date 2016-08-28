@@ -7,7 +7,7 @@ var theGame = function(game) {
     this.explosion = null;
 	this.explosionSound = null;
 	this.shakeWorld = 0;
-  this.spriteBG = null;
+    this.spriteBG = null;
 }
 
 theGame.prototype = {
@@ -15,11 +15,9 @@ theGame.prototype = {
 
   		music = game.add.audio('gameSound',0.2, true);
 
-  		game.stage.backgroundColor = "#d2e1c3";
-  		this.spriteBG = game.add.tileSprite(0 , 0, 800, 600, 'spritesheet');
-      this.spriteBG.animations.add('spritesheet');
-      this.spriteBG.animations.play('spritesheet', 1, true);
-
+    	this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'background');
+    	this.spriteBG.animations.add('backgroundAnime');
+    	this.spriteBG.animations.play('backgroundAnime', 5, true);
 
   		if (music.isPlaying == false)
   		{
@@ -58,7 +56,6 @@ theGame.prototype = {
 		if (this.shakeWorld == 0) {
 			game.world.setBounds(0, 0, game.width,game.height);
 		}
-
 	},
 
 	ennemyHitHero: function() {
