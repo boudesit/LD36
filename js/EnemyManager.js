@@ -1,5 +1,5 @@
 var EnemyManager = function(game) {
-	this.currentSpeed = -300;
+	this.currentSpeed = -400;
 	this.upSpeed = -20;
 	this.currentEnemy = null;
 	this.outOfGamePos = 50;
@@ -59,7 +59,7 @@ EnemyManager.prototype = {
 	},
 	
 	_initEnemy : function() {
-		this._upCurrentSpeed();
+		//this._upCurrentSpeed();
 		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType());
 		this.currentEnemy.create();
 		this.currentEnemy.update();
