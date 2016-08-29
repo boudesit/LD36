@@ -111,6 +111,7 @@ HeroManager.prototype = {
                 this.spriteDeath.kill();
             }
 
+
             this.spriteDeath = this.game.add.sprite(this.posX,this._getSprite().position.y, 'perso_ss3');
             this.spriteDeath.animations.add('death', [0]);
             this.game.physics.arcade.enable(this.spriteDeath);
