@@ -67,7 +67,7 @@ HeroManager.prototype = {
     update: function() {
 
     	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == this.posY){
-            
+            this.spriteSlip.visible = false;            
             jumpSound = game.add.audio('jumpSound');
             jumpSound.play();
 
