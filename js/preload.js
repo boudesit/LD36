@@ -43,10 +43,15 @@ preload.prototype = {
  
 
 		//Sound
-    	game.load.audio('gameSound', 'assets/sound/music_game_1612.mp3');
+    	game.load.audio('gameSound', 'assets/sound/music_game_1628.mp3');
     	game.load.audio('introSound', 'assets/sound/music_title_1613.mp3'); 
     	game.load.audio('loseSound', 'assets/sound/music_gameover_1613.mp3'); 
   		game.load.audio('explosionSound', 'assets/sound/explodeSound.mp3');
+  		game.load.audio('jumpSound', 'assets/sound/sound_Up.mp3');
+  		game.load.audio('crouchSound', 'assets/sound/sound_down.mp3');
+  		game.load.audio('deathSound', 'assets/sound/sound_death.mp3');
+
+
 	},
   	create: function(){
   		this.game.time.events.add(Phaser.Timer.SECOND * 2, this._startGame, this);	
