@@ -32,7 +32,7 @@ Enemy.prototype.create = function create() {
 	this.enemySprite.animations.add('idle');
 	this.enemySprite.enableBody = true;
 	this.enemySprite.body.velocity.x = this.velocity;
-	this.enemySprite.animations.play('idle', 5, true);
+	this.enemySprite.animations.play('idle', 10, true);
 
 	if(this.type === "shot"){
 		enemyTabShot.push(this.enemySprite);
