@@ -87,7 +87,8 @@ HeroManager.prototype = {
 
             this.weapon.fire();
         }
-        if(this.spriteJump.position.y > 385 && this.spriteJump.body.velocity.y == 1000) {
+
+        if(this.spriteJump.position.y > 385 && this.spriteJump.body.velocity.y == 1200) {
             this.spriteJump.visible = false;
             this.sprite.visible = true;
             this._setIsJump(false);
@@ -131,7 +132,7 @@ HeroManager.prototype = {
 
     _ohGravity : function(){
 
-    	this.spriteJump.body.velocity.y = 1000;
+    	this.spriteJump.body.velocity.y = 1200;
 
     },
 
