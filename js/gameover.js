@@ -15,7 +15,7 @@ gameOver.prototype = {
     	}	
   		var gameOverTitle = this.game.add.sprite(0,0,"gameover");
 		
-    	var style = { font: "32px Arial", fill: "#000000", align: "center" };
+    	var style = { font: "32px Comic Sans MS", fill: "#000000", align: "center" };
 
     	text = game.add.text(450, 325, this.game.scoreTotal, style);
 		
