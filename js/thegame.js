@@ -18,7 +18,7 @@ var theGame = function(game) {
 theGame.prototype = {
   	create: function() {
 
-  		music = game.add.audio('gameSound',0.2, true);
+  		music = game.add.audio('gameSound',1.5, true);
 
     	this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'background');
     	this.spriteBG.animations.add('backgroundAnime');
