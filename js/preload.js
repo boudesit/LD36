@@ -33,12 +33,12 @@ preload.prototype = {
 
 		this.game.load.spritesheet("background", "assets/img/game_bg_2011.png",800,600,4);  
 		this.game.load.spritesheet("gametitle", "assets/img/game_start_ss_2021.png",800,600,2);  
+		this.game.load.spritesheet("gameover", "assets/img/gameover_ss_2228.png",800,600,2);  
 
 		this.game.load.spritesheet('strike', 'assets/img/strike.png', 600,300,1); 
 
 
 		//Image
-		this.game.load.image("gameover","assets/img/gameover_1927.png");
     	this.game.load.image('bullet', 'assets/img/bullet.png');
  
 
