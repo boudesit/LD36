@@ -67,6 +67,9 @@ HeroManager.prototype = {
     update: function() {
 
     	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == this.posY){
+            
+            jumpSound = game.add.audio('jumpSound');
+            jumpSound.play();
 
     		this._jump();
     	} else if(this.spriteJump.position.y < 220 ) {
@@ -74,8 +77,15 @@ HeroManager.prototype = {
     		this._ohGravity();
     	} 
 
+        if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY  && this._getSprite() === this.sprite ){
+
+            crouchSound = game.add.audio('crouchSound');
+            crouchSound.play();
+        }
+
     	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
-    		this._slip();
+
+            this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
 
 	    	this.sprite.visible = true;
