@@ -27,7 +27,7 @@ preload.prototype = {
 		this.game.load.spritesheet('enemy_down3', 'assets/img/enemy3_1934.png', 49, 51,2);
 
 
-		this.game.load.spritesheet('perso_ss', 'assets/img/perso_ss_1742.png', 100,100,3); 
+		this.game.load.spritesheet('perso_ss', 'assets/img/perso_ss_0101.png', 100,100,3); 
 		this.game.load.spritesheet('perso_ss2', 'assets/img/perso_small_1813.png', 91,50,1); 
 		this.game.load.spritesheet('perso_ss3', 'assets/img/pero_death_1858.png', 100,100,1); 
 
