@@ -6,6 +6,9 @@ gameOver.prototype = {
   	create: function(){
 
   		loseSound = game.add.audio('loseSound');
+        this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'gameover');
+        this.spriteBG.animations.add('gameover');
+        this.spriteBG.animations.play('gameover', 2, true);
 
   		if (loseSound.isPlaying == false)
   		{
@@ -13,7 +16,6 @@ gameOver.prototype = {
     	}else{
     		loseSound.resume();
     	}	
-  		var gameOverTitle = this.game.add.sprite(0,0,"gameover");
 		
     	var style = { font: "32px Comic Sans MS", fill: "#000000", align: "center" };
 
