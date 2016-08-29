@@ -1,19 +1,22 @@
 var EnemyManager = function(game) {
-	this.currentSpeed = -550;
-	this.upSpeed = -10;
+	this.game = game;
+	this.currentSpeed = -500;
+	this.upSpeed = -5;
 	this.currentEnemy = null;
 	this.outOfGamePos = 50;
 	this.spawnClock = null;
-	this.maxSpeed = -1000;
+	this.maxSpeed = -1200;
+	this.enemiesOut = 0;
 }
 
 EnemyManager.prototype = {
     create: function() {
 		// random enemy
-		var random = this._randomType();
+		var random = (this._randomIntFromInterval(1,4)-1);
 		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType(), random);
 		this.currentEnemy.create();
 		this.spawnClock = new SpawnClock(game);
+		this.enemiesOut = 0;
     },
 
     update: function() {
@@ -27,6 +30,11 @@ EnemyManager.prototype = {
 		this._startSpawnClock();
 
 		this._initEnemyAndStopClock();
+
+		if (this.currentEnemy.getEnemiesOut() > 0) {
+			this.currentEnemy.setEnemiesOut(this.currentEnemy.getEnemiesOut() - 1);
+			this.enemiesOut++;
+		}
     },
 	
 	_initEnemyAndStopClock : function () {
@@ -57,7 +65,8 @@ EnemyManager.prototype = {
 	
 	_initEnemy : function() {
 		this._upCurrentSpeed();
-		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType(), this._randomType());
+		this.game.currentSpeed = this.currentSpeed;
+		this.currentEnemy = new Enemy(game, this.currentSpeed, this._randomType(), (this._randomIntFromInterval(1,4)-1));
 		this.currentEnemy.create();
 		this.currentEnemy.update();
 	},
@@ -96,6 +105,10 @@ EnemyManager.prototype = {
 
 	_explode : function(min, max) {
 
+	},
+
+	_getEnemiesOut : function() {
+		return this.enemiesOut;
 	}
 
 }

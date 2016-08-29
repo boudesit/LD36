@@ -10,8 +10,9 @@ function Enemy(game, velocity, type, spriteNumber) {
 	this.posY = 450 - yDiff[tabPos];
 	this.isDead = false;
 	this.isDraw = false;
-	this.spriteNo = spriteNumber % 3;
+	this.spriteNo = spriteNumber % 4;
 	this.isSpriteDestroy;
+	this.enemiesOut = 0;
 };
 
 var types = ["up", "down", "shot"];
@@ -31,7 +32,7 @@ Enemy.prototype.create = function create() {
 	this.enemySprite.animations.add('idle');
 	this.enemySprite.enableBody = true;
 	this.enemySprite.body.velocity.x = this.velocity;
-	this.enemySprite.animations.play('idle', 5, true);
+	this.enemySprite.animations.play('idle', 10, true);
 
 	if(this.type === "shot"){
 		enemyTabShot.push(this.enemySprite);
@@ -41,6 +42,12 @@ Enemy.prototype.create = function create() {
 };
 
 Enemy.prototype.update = function update() {
+	for (var i = enemyTab.length; i > 0; i--) {
+ 		if (enemyTab[i-1].x < 50 && enemyTab[i - 1].exists) {
+			enemyTab[i - 1].kill();
+			this.enemiesOut++;
+		}
+ 	}
 };
 
 Enemy.prototype.destroy = function destroy() {
@@ -101,6 +108,14 @@ Enemy.prototype.getEnemies = function getEnemies() {
 
 Enemy.prototype.getEnemiesShot = function getEnemies() {
 	return enemyTabShot;
+};
+
+Enemy.prototype.getEnemiesOut = function() {
+	return this.enemiesOut;
+};
+
+Enemy.prototype.setEnemiesOut = function(nb) {
+	this.enemiesOut = nb;
 };
 
 Enemy.prototype.clearArray = function clearArray() {

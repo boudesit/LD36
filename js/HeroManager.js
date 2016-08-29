@@ -67,15 +67,25 @@ HeroManager.prototype = {
     update: function() {
 
     	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == this.posY){
+            this.spriteSlip.visible = false;            
+            jumpSound = game.add.audio('jumpSound');
+            jumpSound.play();
 
     		this._jump();
-    	} else if(this.spriteJump.position.y < 250 ) {
+    	} else if(this.spriteJump.position.y < 220 ) {
 
     		this._ohGravity();
     	} 
 
+        if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY  && this._getSprite() === this.sprite ){
+
+            crouchSound = game.add.audio('crouchSound');
+            crouchSound.play();
+        }
+
     	if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && !game.input.keyboard.isDown(Phaser.Keyboard.UP) &&  this.spriteJump.position.y == this.posY){
-    		this._slip();
+
+            this._slip();
     	} else if (!game.input.keyboard.isDown(Phaser.Keyboard.DOWN)  && !this._getIsJump()) {
 
 	    	this.sprite.visible = true;
@@ -87,7 +97,8 @@ HeroManager.prototype = {
 
             this.weapon.fire();
         }
-        if(this.spriteJump.position.y > 385 && this.spriteJump.body.velocity.y == 1000) {
+
+        if(this.spriteJump.position.y > 385 && this.spriteJump.body.velocity.y == 1200) {
             this.spriteJump.visible = false;
             this.sprite.visible = true;
             this._setIsJump(false);
@@ -99,6 +110,7 @@ HeroManager.prototype = {
             if(this.spriteDeath != null) {
                 this.spriteDeath.kill();
             }
+
 
             this.spriteDeath = this.game.add.sprite(this.posX,this._getSprite().position.y, 'perso_ss3');
             this.spriteDeath.animations.add('death', [0]);
@@ -126,12 +138,12 @@ HeroManager.prototype = {
         this.sprite.visible = false;
         this.spriteJump.visible = true;
 
-    	this.spriteJump.body.velocity.y = -500;
+    	this.spriteJump.body.velocity.y = this.game.currentSpeed;
     },
 
     _ohGravity : function(){
 
-    	this.spriteJump.body.velocity.y = 1000;
+    	this.spriteJump.body.velocity.y = 1200;
 
     },
 
