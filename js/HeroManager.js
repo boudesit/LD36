@@ -69,7 +69,7 @@ HeroManager.prototype = {
     	if(game.input.keyboard.isDown(Phaser.Keyboard.UP) && !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&  this.spriteJump.position.y == this.posY){
 
     		this._jump();
-    	} else if(this.spriteJump.position.y < 250 ) {
+    	} else if(this.spriteJump.position.y < 220 ) {
 
     		this._ohGravity();
     	} 
@@ -126,7 +126,7 @@ HeroManager.prototype = {
         this.sprite.visible = false;
         this.spriteJump.visible = true;
 
-    	this.spriteJump.body.velocity.y = -500;
+    	this.spriteJump.body.velocity.y = this.game.currentSpeed;
     },
 
     _ohGravity : function(){
