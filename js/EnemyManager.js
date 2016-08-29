@@ -5,7 +5,7 @@ var EnemyManager = function(game) {
 	this.currentEnemy = null;
 	this.outOfGamePos = 50;
 	this.spawnClock = null;
-	this.maxSpeed = -1000;
+	this.maxSpeed = -1200;
 	this.enemiesOut = 0;
 }
 
