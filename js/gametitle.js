@@ -3,7 +3,7 @@ var gameTitle = function(game){}
 gameTitle.prototype = {
   	create: function(){
 
-  		introSound = game.add.audio('introSound');
+  		introSound = game.add.audio('introSound', 1, true);
 
       this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'gametitle');
       this.spriteBG.animations.add('gametitle');
