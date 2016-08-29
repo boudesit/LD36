@@ -74,9 +74,12 @@ theGame.prototype = {
 
 	ennemyHitHero: function() {
 		this.heroManager._setIsDead(true);
-        game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
+    deathSound = game.add.audio('deathSound');
+    deathSound.play();
+
+    game.time.events.add(Phaser.Timer.SECOND * 1, this.lose, this);
 		music.pause();
-    	this.ennemy.getEnemy().clearArray();
+  	this.ennemy.getEnemy().clearArray();
 	},
 
 	fireHitEnnemy: function(fire,ennemy) {

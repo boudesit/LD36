@@ -29,7 +29,7 @@ preload.prototype = {
 
 		this.game.load.spritesheet('perso_ss', 'assets/img/perso_ss_0101.png', 100,100,3); 
 		this.game.load.spritesheet('perso_ss2', 'assets/img/perso_small_1813.png', 91,50,1); 
-		this.game.load.spritesheet('perso_ss3', 'assets/img/pero_death_1858.png', 100,100,1); 
+		this.game.load.spritesheet('perso_ss3', 'assets/img/hero_death_1707.png', 100,100,1); 
 
 		this.game.load.spritesheet("background", "assets/img/game_bg_1805.png",800,600,4);  
 
@@ -43,7 +43,7 @@ preload.prototype = {
  
 
 		//Sound
-    	game.load.audio('gameSound', 'assets/sound/music_game_1628.mp3');
+    	game.load.audio('gameSound', 'assets/sound/music_game_1644.mp3');
     	game.load.audio('introSound', 'assets/sound/music_title_1613.mp3'); 
     	game.load.audio('loseSound', 'assets/sound/music_gameover_1613.mp3'); 
   		game.load.audio('explosionSound', 'assets/sound/explodeSound.mp3');
